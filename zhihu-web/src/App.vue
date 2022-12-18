@@ -1,17 +1,38 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import ColumnList, { type ColumnProps } from './components/ColumnList.vue'
+
+const testData: ColumnProps[] = [
+  {
+    id: 1,
+    title: '标题1',
+    description: '描述1',
+    avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
+  },
+  {
+    id: 2,
+    title: '标题2',
+    description: '描述2',
+    avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
+  },
+  {
+    id: 3,
+    title: '标题3',
+    description: '描述3',
+    avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
+  },
+  {
+    id: 4,
+    title: '标题4',
+    description: '描述4',
+    avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
+  }
+]
 </script>
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <ColumnList :list="testData" />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
