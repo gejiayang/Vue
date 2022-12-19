@@ -1,5 +1,12 @@
 <script setup lang="ts">
+import GlobalHeader, { type UserProps } from './components/GlobalHeader.vue'
 import ColumnList, { type ColumnProps } from './components/ColumnList.vue'
+
+const currentUser: UserProps = {
+  isLogin: true,
+  id: 1,
+  name: 'Oliver'
+}
 
 const testData: ColumnProps[] = [
   {
@@ -30,7 +37,8 @@ const testData: ColumnProps[] = [
 </script>
 
 <template>
-  <div>
+  <div class="container">
+    <GlobalHeader :user="currentUser" />
     <ColumnList :list="testData" />
   </div>
 </template>
