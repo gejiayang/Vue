@@ -5,7 +5,8 @@
     <form action="">
       <div class="mb-3">
         <label class="form-label">邮箱地址</label>
-        <ValidateInput :rules="emailRules" />
+        <ValidateInput :rules="emailRules" v-model="emailVal" />
+        {{ emailVal }}
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">密码</label>
@@ -16,6 +17,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import GlobalHeader, { type UserProps } from './components/GlobalHeader.vue'
 import ValidateInput, { type RuleProp } from './components/ValidateInput.vue'
 // import ColumnList, { type ColumnProps } from './components/ColumnList.vue'
@@ -52,6 +54,8 @@ const currentUser: UserProps = {
 //     avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
 //   }
 // ]
+
+const emailVal = ref('')
 
 const emailRules: RuleProp[] = [
   { type: 'required', message: '邮箱地址不能为空' },

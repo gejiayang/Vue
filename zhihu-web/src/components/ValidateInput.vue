@@ -4,7 +4,8 @@
       type="text"
       class="form-control"
       :class="{'is-invalid': inputRef.error}"
-      v-model="inputRef.val"
+      :value="inputRef.val"
+      @input="updateValue"
       @blur="validateInput"
     >
     <span v-if="inputRef.error" class="invalid-feedback">{{ inputRef.message }}</span>
@@ -22,18 +23,26 @@ export interface RuleProp {
 type RulesProp = RuleProp[]
 
 interface Props {
-  rules: RulesProp
+  rules: RulesProp;
+  modelValue: string;
 }
 
 const props = defineProps<Props>()
+const emit = defineEmits(['update:modelValue'])
 
 const emailReg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
 
 const inputRef = reactive({
-  val: '',
+  val: props.modelValue || '',
   error: false,
   message: ''
 })
+
+const updateValue = (e: Event) => {
+  const targetValue = (e.target as HTMLInputElement).value
+  inputRef.val = targetValue
+  emit('update:modelValue', targetValue)
+}
 
 const validateInput = () => {
   if (props.rules) {
