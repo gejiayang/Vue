@@ -5,12 +5,21 @@
     <form action="">
       <div class="mb-3">
         <label class="form-label">邮箱地址</label>
-        <ValidateInput :rules="emailRules" v-model="emailVal" />
-        {{ emailVal }}
+        <ValidateInput
+          :rules="emailRules"
+          v-model="emailVal"
+          placeholder="请输入邮箱地址"
+          type="text"
+        />
       </div>
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">密码</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <label class="form-label">密码</label>
+        <ValidateInput
+          :rules="passwordRules"
+          v-model="passwordVal"
+          placeholder="请输入密码"
+          type="password"
+        />
       </div>
     </form>
   </div>
@@ -56,11 +65,17 @@ const currentUser: UserProps = {
 // ]
 
 const emailVal = ref('')
-
 const emailRules: RuleProp[] = [
   { type: 'required', message: '邮箱地址不能为空' },
   { type: 'email', message: '请输入正确的邮箱格式' }
 ]
+
+const passwordVal = ref('')
+const passwordRules: RuleProp[] = [
+  { type: 'required', message: '密码不能为空' }
+]
+
+
 </script>
 
 <style scoped>

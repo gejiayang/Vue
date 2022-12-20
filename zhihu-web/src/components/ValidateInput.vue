@@ -1,7 +1,7 @@
 <template>
   <div class="validate-input-container pb-3">
     <input
-      type="text"
+      v-bind="$attrs"
       class="form-control"
       :class="{'is-invalid': inputRef.error}"
       :value="inputRef.val"
@@ -12,6 +12,11 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  inheritAttrs: false
+};
+</script>
 <script setup lang="ts">
 import { reactive } from 'vue'
 
