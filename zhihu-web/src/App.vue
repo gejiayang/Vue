@@ -1,6 +1,24 @@
+<template>
+  <div class="container">
+    <GlobalHeader :user="currentUser" />
+    <!-- <ColumnList :list="testData" /> -->
+    <form action="">
+      <div class="mb-3">
+        <label class="form-label">邮箱地址</label>
+        <ValidateInput :rules="emailRules" />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">密码</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+    </form>
+  </div>
+</template>
+
 <script setup lang="ts">
 import GlobalHeader, { type UserProps } from './components/GlobalHeader.vue'
-import ColumnList, { type ColumnProps } from './components/ColumnList.vue'
+import ValidateInput, { type RuleProp } from './components/ValidateInput.vue'
+// import ColumnList, { type ColumnProps } from './components/ColumnList.vue'
 
 const currentUser: UserProps = {
   isLogin: true,
@@ -8,40 +26,38 @@ const currentUser: UserProps = {
   name: 'Oliver'
 }
 
-const testData: ColumnProps[] = [
-  {
-    id: 1,
-    title: '标题1',
-    description: '描述1',
-    avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
-  },
-  {
-    id: 2,
-    title: '标题2',
-    description: '描述2',
-    avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
-  },
-  {
-    id: 3,
-    title: '标题3',
-    description: '描述3',
-    avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
-  },
-  {
-    id: 4,
-    title: '标题4',
-    description: '描述4',
-    avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
-  }
+// const testData: ColumnProps[] = [
+//   {
+//     id: 1,
+//     title: '标题1',
+//     description: '描述1',
+//     avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
+//   },
+//   {
+//     id: 2,
+//     title: '标题2',
+//     description: '描述2',
+//     avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
+//   },
+//   {
+//     id: 3,
+//     title: '标题3',
+//     description: '描述3',
+//     avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
+//   },
+//   {
+//     id: 4,
+//     title: '标题4',
+//     description: '描述4',
+//     avatar: 'https://picx.zhimg.com/80/v2-965a81075317d91f55cda3652859f3bb_1440w.webp?source=1940ef5c'
+//   }
+// ]
+
+const emailRules: RuleProp[] = [
+  { type: 'required', message: '邮箱地址不能为空' },
+  { type: 'email', message: '请输入正确的邮箱格式' }
 ]
 </script>
-
-<template>
-  <div class="container">
-    <GlobalHeader :user="currentUser" />
-    <ColumnList :list="testData" />
-  </div>
-</template>
 
 <style scoped>
 .logo {

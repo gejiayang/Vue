@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 interface Props {
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
